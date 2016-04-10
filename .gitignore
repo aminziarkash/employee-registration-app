@@ -1,0 +1,19 @@
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# IntelliJ project files
+*.iml
+.idea
+
+# Eclipse project files
+.project
+.classpath
+.settings
+
+#target folder
+target
+
+# metadata
+.metadata
+
+employee-registration\webapp\target
