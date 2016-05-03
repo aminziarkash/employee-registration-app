@@ -18,31 +18,21 @@ public interface EmployeeDao {
      */
     void createEmployee(Employee employee) throws SQLException;
 
-
-    boolean insertEmployee(Employee employee) throws SQLException;
-    boolean updateEmployee(Employee employee) throws SQLException;
-    boolean deleteEmployee(Employee employee) throws SQLException;
-
-
     /**
      * Update the employee in the database
      *
      * @param employee
      * @throws SQLException
      */
-//    void updateEmployee(Employee employee) throws SQLException;
+    void updateEmployee(Employee employee) throws SQLException;
 
     /**
      * Delete the employee from the database
      *
-     * @param employee
+     * @param employeeFirstName
      * @throws SQLException
      */
-//    void deleteEmployee(Employee employee) throws SQLException;
-
-
-    int addEmployeeToDatabase(Employee employee) throws SQLException;
-
+    void deleteEmployee(String employeeFirstName) throws SQLException;
 
     /**
      * Get employee using name

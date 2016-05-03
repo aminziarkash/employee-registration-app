@@ -5,5 +5,9 @@ package com.az.era.dao.impl;
  */
 public class Queries {
 
-    static final String GET_EMPLOYEES_QUERY = "select * from employees";
+    public static final String GET_EMPLOYEES_QUERY = "SELECT * FROM employees";
+
+    public static final String INSERT_INTO_EMPLOYEES = "INSERT INTO employees VALUES (?,?,?,?,?)";
+
+    public static final String DELETE_FROM_EMPLOYEES_BY_FIRST_NAME = "DELETE FROM employees WHERE firstname=";
 }

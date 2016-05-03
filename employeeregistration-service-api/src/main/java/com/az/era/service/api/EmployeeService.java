@@ -10,11 +10,10 @@ import java.util.List;
  */
 public interface EmployeeService {
 
-    String getEmployeesCsv() throws SQLException;
-
     /**
      * @return the list of employees from local database
      */
     List<Employee> getEmployees() throws SQLException;
+
 
 }

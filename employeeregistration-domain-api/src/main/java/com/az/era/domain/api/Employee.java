@@ -1,6 +1,6 @@
 package com.az.era.domain.api;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by aziarkash on 26-4-2016.
@@ -45,6 +45,5 @@ public interface Employee {
      */
     java.sql.Date getDateOfBirth();
 
-    void setDateOfBirth(java.sql.Date dateOfBirth);
-
+    void setDateOfBirth(Date dateOfBirth);
 }

@@ -2,20 +2,13 @@ package com.az.era.service.impl;
 
 import com.az.era.dao.api.EmployeeDao;
 import com.az.era.dao.impl.EmployeeDaoImpl;
-import com.az.era.datasource.impl.DataSourceImpl;
 import com.az.era.domain.api.Employee;
 import com.az.era.domain.impl.EmployeeImpl;
 import com.az.era.service.api.EmployeeService;
-import com.sun.glass.ui.EventLoop;
-import com.sun.org.apache.xpath.internal.operations.Number;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -23,67 +16,56 @@ import java.util.logging.Logger;
  */
 public class EmployeeServiceImpl implements EmployeeService {
 
+    private static EmployeeDao employeeDao = new EmployeeDaoImpl();
+
     private final Logger LOGGER = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
-    private EmployeeDao employeeDao;
+    private static void createHardCodedEmployee() {
+        Date dob = new Date(12, 12, 12);
+        dob.setTime(dob.getDate());
+        Employee testEmployee = new EmployeeImpl();
+        testEmployee.setFirstName("Hardcoded");
+        testEmployee.setLastName("Employee");
+        testEmployee.setEmailAddress("h.c@gmail.com");
+        testEmployee.setBsnNumber(987456357);
+        testEmployee.setDateOfBirth(dob);
 
-    public String getEmployeesCsv() throws SQLException {
-        return null;
+        try {
+            employeeDao.createEmployee(testEmployee);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Delete the employee with firstname "Hardcoded"
+    private static void deleteHardCodedEmployee() throws SQLException {
+        try {
+            employeeDao.deleteEmployee("Hardcoded");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Employee> getEmployees() throws SQLException {
-        Employee employee = new EmployeeImpl();
-        employee.setFirstName("Amin");
-        employeeDao.createEmployee(employee);
         return employeeDao.getEmployee();
     }
 
-    private Employee createEmployee() {
-
-        java.sql.Date dob = new java.sql.Date(12, 12, 12);
-        dob.setTime(dob.getDate());
-        Employee testEmployee = new EmployeeImpl();
-        testEmployee.setFirstName("Nakib");
-        testEmployee.setLastName("Ziarkash");
-        testEmployee.setEmailAddress("a.ziarkash@gmail.com");
-        testEmployee.setBsnNumber(123456789);
-        testEmployee.setDateOfBirth(dob);
-
-        Connection conn = null;
-        Statement stmt = null;
-
+    public static void main(String[] args) {
+        // Get the employee list (for testing)
+        EmployeeService employeeService = new EmployeeServiceImpl();
         try {
-            conn = new DataSourceImpl().getConnection();
-            stmt = conn.createStatement();
-            for (int i = 0; i < 33; i++) {
-                String query = "insert into employees values (?,?,?,?,?)";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, testEmployee.getFirstName());
-                ps.setString(2, testEmployee.getLastName());
-                ps.setString(3, testEmployee.getEmailAddress());
-                ps.setInt(4, testEmployee.getBsnNumber());
-                ps.setDate(5, testEmployee.getDateOfBirth());
-                ps.executeQuery();
-            }
+            // get the list of employees from the database
+            employeeService.getEmployees();
+            // add an employee to the database
+            createHardCodedEmployee();
+            // get the employee list again to see the update
+            employeeService.getEmployees();
+            // delete the hardcoded employee created earlier
+            deleteHardCodedEmployee();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return testEmployee;
-    }
-
-    public static void main(String[] args) {
-
-        Connection conn = null;
-        EmployeeDao employeeDao = new EmployeeDaoImpl();
-
-        try {
-            conn = new DataSourceImpl().getConnection();
-            List<Employee> employees = employeeDao.getEmployee();
-
-        } catch(SQLException e) {
-            e.printStackTrace();
-        }
-
     }
 }

@@ -34,37 +34,6 @@ public class DataSourceImpl implements DataSource {
         return dbDataSource.getConnection();
     }
 
-    public static void main(String[] args) {
-        java.sql.Date dob = new java.sql.Date(12, 12, 12);
-        dob.setTime(dob.getDate());
-        Employee testEmployee = new EmployeeImpl();
-        testEmployee.setFirstName("Nakib");
-        testEmployee.setLastName("Ziarkash");
-        testEmployee.setEmailAddress("a.ziarkash@gmail.com");
-        testEmployee.setBsnNumber(123456789);
-        testEmployee.setDateOfBirth(dob);
-
-        Connection conn = null;
-        Statement stmt = null;
-
-        try {
-            conn = new DataSourceImpl().getConnection();
-            stmt = conn.createStatement();
-            for (int i = 0; i < 3; i++) {
-                String query = "insert into employees values (?,?,?,?,?)";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, testEmployee.getFirstName());
-                ps.setString(2, testEmployee.getLastName());
-                ps.setString(3, testEmployee.getEmailAddress());
-                ps.setInt(4, testEmployee.getBsnNumber());
-                ps.setDate(5, testEmployee.getDateOfBirth());
-                ps.executeQuery();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void init() {
         LOGGER.log(Level.FINE, "Entering init function");
         // final HikariConfig dbConfig = new HikariConfig(CONNECTION_PROPERTIES);
