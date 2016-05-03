@@ -17,25 +17,45 @@ public class EmployeeImpl implements Employee {
 
     private int bsnNumber;
 
-    private Date dateOfBirth;
+    private java.sql.Date dateOfBirth;
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmailAddress() {
         return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public int getBsnNumber() {
         return bsnNumber;
     }
 
-    public Date getDateOfBirth() {
+    public void setBsnNumber(int bsnNumber) {
+        this.bsnNumber = bsnNumber;
+    }
+
+    public java.sql.Date getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public void setDateOfBirth(java.sql.Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

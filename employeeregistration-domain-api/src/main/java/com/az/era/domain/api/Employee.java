@@ -13,11 +13,15 @@ public interface Employee {
      */
     String getFirstName();
 
+    void setFirstName(String firstName);
+
     /**
      * Get the last name for the employee
      * @return
      */
     String getLastName();
+
+    void setLastName(String lastName);
 
     /**
      * Get employees email address
@@ -25,16 +29,22 @@ public interface Employee {
      */
     String getEmailAddress();
 
+    void setEmailAddress(String emailAddress);
+
     /**
      * Get employees Burger Service Nummer
      * @return
      */
     int getBsnNumber();
 
+    void setBsnNumber(int bsnNumber);
+
     /**
      * Get the date of birth for the employee
      * @return
      */
-    Date getDateOfBirth();
+    java.sql.Date getDateOfBirth();
+
+    void setDateOfBirth(java.sql.Date dateOfBirth);
 
 }
