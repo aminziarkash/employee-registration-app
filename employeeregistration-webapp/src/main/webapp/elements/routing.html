@@ -45,6 +45,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'home';
     });
 
+    page('home', function() {
+      app.route = 'home';
+    });
+      
     page('/register-employee', function() {
         app.route = 'register-employee';
       });
@@ -60,6 +64,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     page('/contact', function() {
       app.route = 'contact';
+    });
+      
+    page('/employees-table', function() {
+      app.route = 'employees-table';
     });
 
     // 404

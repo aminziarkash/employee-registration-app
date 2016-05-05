@@ -1,0 +1,20 @@
+<dom-module id="user-view">
+
+    <template>
+        First: {{firstName}}
+    </template>
+
+    <script>
+      Polymer({
+        is: 'user-view',
+        properties: {
+          firstName: {
+              type: String,
+              value: "",
+              notify: true
+          }
+        }
+      });
+    </script>
+
+</dom-module>

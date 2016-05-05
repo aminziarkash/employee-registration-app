@@ -11,15 +11,15 @@
 	</welcome-file-list>
 
 	<!-- It is recommended to be commented on production -->
-	<servlet>
-		<servlet-name>default</servlet-name>
-		<servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
-		<init-param>
-			<param-name>useFileMappedBuffer</param-name>
-			<param-value>false</param-value>
-		</init-param>
-		<load-on-startup>0</load-on-startup>
-	</servlet>
+	<!--<servlet>-->
+		<!--<servlet-name>default</servlet-name>-->
+		<!--<servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>-->
+		<!--<init-param>-->
+			<!--<param-name>useFileMappedBuffer</param-name>-->
+			<!--<param-value>false</param-value>-->
+		<!--</init-param>-->
+		<!--<load-on-startup>0</load-on-startup>-->
+	<!--</servlet>-->
 
 
 </web-app>
